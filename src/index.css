@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Condensed+One&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 216 72% 46%; /* #2162C6 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 80% 95%; /* #E6EEFC */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 216 80% 98%; /* Light blue instead of purple */
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 216 90% 55%; /* #2678F3 */
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 216 72% 46%; /* Matching primary color */
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-[#2162C6] via-[#2370E0] to-[#2678F3] bg-clip-text text-transparent;
+}
+
+.feature-card {
+  @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+.button-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-md hover:bg-accent transition-colors duration-300 font-medium;
+}
+
+.button-secondary {
+  @apply bg-secondary text-primary px-6 py-3 rounded-md hover:bg-secondary/80 transition-colors duration-300 font-medium;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-spacing {
+  @apply py-16 md:py-24;
+}
+
