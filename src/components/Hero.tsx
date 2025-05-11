@@ -1,7 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useCheckout } from "@/hooks/useCheckout";
 
 const Hero = () => {
+  const { loading, handleCheckout } = useCheckout();
+
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById("pricing");
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="pt-16 md:pt-24 pb-24 bg-gradient-to-b from-[#EBF2FD] to-white">
       <div className="container-custom">
@@ -29,16 +39,18 @@ const Hero = () => {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <a href="https://slack.com/oauth/v2/authorize?client_id=8697258707847.8714309865490&scope=assistant:write,chat:write,chat:write.customize,chat:write.public,commands,groups:history,users:read&user_scope=users:read,users:read.email&_gl=1*xtzhve*_gcl_au*MjEwMTkzMzY2NS4xNzQ0OTc4NjIzLjE0NjE4MTc5MzAuMTc0NTIzNzMwNC4xNzQ1MjM3MzA2*_ga*MTM1OTcxMTA1MS4xNzQ0OTc4NjIz*_ga_QTJQME5M5D*MTc0NTI1ODc5OS41LjEuMTc0NTI1ODgxNS40NC4wLjA.">
-              <Button className="bg-[#2162C6] hover:bg-[#2678F3] text-white px-8 py-6 text-base rounded-md">
-                Add to Slack
-              </Button>
-            </a>
+            <Button
+              className="bg-[#2162C6] hover:bg-[#2678F3] text-white px-8 py-6 text-base rounded-md"
+              onClick={scrollToPricing}
+            >
+              Add to Slack
+            </Button>
             <Button
               variant="outline"
               className="text-[#2162C6] border-[#2162C6]/20 hover:bg-[#2162C6]/5 px-8 py-6 text-base rounded-md"
+              onClick={scrollToPricing}
             >
-              <span>Pricing</span>
+              <span>View Pricing</span>
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

@@ -19,66 +19,28 @@ const Footer = () => {
             <h3 className="font-medium mb-4">Product</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link
-                  to="/#features"
+                <a
+                  href="#features"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Features
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  to="/#pricing"
+                <a
+                  href="#how-it-works"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  How It Works
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#pricing"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Pricing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/#integrations"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Integrations
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/#changelog"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Changelog
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-medium mb-4">Company</h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link
-                  to="/#about"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/#blog"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/#contact"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Contact
-                </Link>
+                </a>
               </li>
               <li>
                 <Link
@@ -87,6 +49,40 @@ const Footer = () => {
                 >
                   Privacy Policy
                 </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-medium mb-4">Resources</h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a
+                  href="https://slack.com/apps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Slack App Directory
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://api.slack.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Slack API
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@rewordit.pro"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Contact Support
+                </a>
               </li>
             </ul>
           </div>
@@ -101,4 +97,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

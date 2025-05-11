@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, HelpCircle } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { useCheckout } from "@/hooks/useCheckout";
 
 const includedFeatures = [
-  "Rephrase up to 50 messages per month",
+  "Unlimited message paraphrasing",
   "Full rewrite history and insights",
   "Instant Slack integration",
   "Access to advanced tone settings",
@@ -16,6 +18,11 @@ const includedFeatures = [
 ];
 
 const Pricing = () => {
+  const [billingInterval, setBillingInterval] = useState<"monthly" | "yearly">(
+    "monthly"
+  );
+  const { loading, handleCheckout } = useCheckout();
+
   return (
     <section
       id="pricing"
@@ -35,35 +42,36 @@ const Pricing = () => {
           {/* Left Column - Pricing Details */}
           <div className="bg-background/60 backdrop-blur-sm border border-border/40 rounded-xl p-8">
             <div className="space-y-6">
-              <RadioGroup defaultValue="monthly" className="space-y-4">
+              <RadioGroup
+                value={billingInterval}
+                onValueChange={(value) =>
+                  setBillingInterval(value as "monthly" | "yearly")
+                }
+                className="space-y-4"
+              >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="monthly" id="monthly" />
                   <Label htmlFor="monthly">Pay monthly</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="yearly" id="yearly" />
-                  <Label htmlFor="yearly">Pay yearly (save 17%)</Label>
+                  <Label htmlFor="yearly">Pay yearly (save 25% )</Label>
                 </div>
               </RadioGroup>
 
               <div className="pt-4">
                 <h3 className="text-2xl font-semibold mb-2">
-                  Starts at $15/month
+                  {billingInterval === "monthly"
+                    ? "$9.99/month"
+                    : "$89.99/year"}
                 </h3>
                 <p className="text-muted-foreground">
-                  We offer tiered pricing to fit your needs, up to unlimited
-                  messages.{" "}
-                  <Button variant="link" className="text-primary p-0">
-                    See pricing details
-                  </Button>
+                  {billingInterval === "yearly" &&
+                    "Save 25% with yearly billing"}
                 </p>
               </div>
 
               <div className="space-y-4 pt-6">
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-primary" />
-                  <span>Up to 50 channels included</span>
-                </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
                   <span>Message history & analytics</span>
@@ -74,13 +82,16 @@ const Pricing = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
-                  <span>API access</span>
-                  <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                  <span>Custom tone presets</span>
                 </div>
               </div>
 
-              <Button className="w-full bg-primary hover:bg-accent text-white mt-6">
-                Start your 14-day free trial
+              <Button
+                className="w-full bg-primary hover:bg-accent text-white mt-6"
+                onClick={() => handleCheckout(billingInterval)}
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Subscribe Now"}
               </Button>
 
               <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground pt-4">
@@ -107,14 +118,6 @@ const Pricing = () => {
                 </div>
               ))}
             </div>
-
-            <Button
-              variant="link"
-              className="text-[#2678F3] hover:text-[#2162C6] mt-8 pl-0"
-            >
-              See all features →
-            </Button>
-
             <p className="text-sm text-muted-foreground mt-8">
               All pricing is in USD and renews automatically unless cancelled.
               You can purchase more channels for an additional fee.
@@ -127,4 +130,3 @@ const Pricing = () => {
 };
 
 export default Pricing;
-
